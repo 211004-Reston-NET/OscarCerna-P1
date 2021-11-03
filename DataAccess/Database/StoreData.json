@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "Oz Wonderland California",
+        "Address": "2520 Carbon Canyon Rd, Malibu, CA 90265",
+        "Products": null,
+        "Orders": null
+    },
+    {
+        "Name": "Oz Wonderland New Mexico ",
+        "Address": "1335 Cooks Mine Road, Cannon Afb, New Mexico, 88103",
+        "Products": null,
+        "Orders": null
+    },
+    {
+        "Name": "Oz Wonderland New York",
+        "Address": "3360 Bicetown Road, New York, NY 10013",
+        "Products": null,
+        "Orders": null
+    }
+]
