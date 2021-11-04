@@ -19,10 +19,10 @@ namespace UserInterface
             Console.Clear();
             Console.WriteLine("=== Inventory ===");
             Console.WriteLine();
-            StoreFront foundStore = _storeBL.GetStore(Singleton.storeFront.StoreID);
-            Console.WriteLine("Store ID: "+foundStore.StoreID);
-            Console.WriteLine("Name: "+foundStore.Name);
-            Console.WriteLine("Address: "+foundStore.Address);
+            StoreFront foundStore = _storeBL.GetStore(Singleton.storeFront.StoreId);
+            Console.WriteLine("Store ID: "+foundStore.StoreId);
+            Console.WriteLine("Name: "+foundStore.StoreName);
+            Console.WriteLine("Address: "+foundStore.StoreAddress);
             Console.WriteLine();
             Console.WriteLine("-----------------------------");
             Console.WriteLine();
@@ -33,7 +33,7 @@ namespace UserInterface
                 Console.WriteLine("Name: "+item.ProductName);
                 Console.WriteLine("Brand: "+item.ProductBrand);
                 Console.WriteLine("Quantity: "+item.Quantity);
-                Console.WriteLine("Price: "+item.Price);
+                Console.WriteLine("Price: "+item.ProductPrice);
                 Console.WriteLine();
             }
                 Console.WriteLine();

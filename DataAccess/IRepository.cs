@@ -49,10 +49,6 @@ namespace DataAccess
         /// <returns> will return a list of products. </returns>
         List<Product> GetAllProduct();
         
-        /// This will return a Product stored in the database
-        /// </summary>
-        /// <returns>It will return a Product </returns>
-        Product GetProduct(int p_id);
     
 //ORDERS
         /// It will add an Order in our database
@@ -65,13 +61,13 @@ namespace DataAccess
     
 //LINE ITEMS
 
-        LineItems AddLineItems(LineItems p_item);
+        LineItem AddLineItems(LineItem p_item);
         /// <summary>
         ///  This will return a list of products from the db.
         /// </summary>
         /// <returns> will return a list of products. </returns>
-        List<LineItems> GetAllLineItems();
-        List<LineItems> GetAllLineItems(int orderId);
+        List<LineItem> GetAllLineItems();
+        List<LineItem> GetAllLineItems(int orderId);
 
 //INVENTORY
         /// <summary>

@@ -29,10 +29,10 @@ namespace STest
         int StoreID = 1;
         
         //Act
-        _storeTest.StoreID = StoreID;
+        _storeTest.StoreId = StoreID;
 
         //Assert
-        Assert.Equal(_storeTest.StoreID, StoreID);
+        Assert.Equal(_storeTest.StoreId, StoreID);
         }
 
         [Fact]
@@ -44,10 +44,10 @@ namespace STest
        decimal Price = 1;
 
        //Act
-       _productTest.Price = Price;
+       _productTest.ProductPrice = Price;
 
        //Assert
-        Assert.Equal(_productTest.Price, Price);
+        Assert.Equal(_productTest.ProductPrice, Price);
 
         }
     }

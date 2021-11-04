@@ -18,7 +18,6 @@ namespace UserInterface
             Console.WriteLine("==== Search Result ====");
             Console.WriteLine();
             Customer foundCustomer = _customerBL.GetCustomer(Singleton.customer.CustomerId);
-            
             Console.WriteLine("CustomerId: "+foundCustomer.CustomerId);
             Console.WriteLine("Name: "+foundCustomer.Name);
             Console.WriteLine("Address: "+foundCustomer.Address);

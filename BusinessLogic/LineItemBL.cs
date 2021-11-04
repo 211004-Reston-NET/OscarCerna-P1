@@ -12,13 +12,13 @@ namespace BusinessLogic
         {
             _repo = p_repo;
         }
-        public LineItems AddLineItems(LineItems p_item)
+        public LineItem AddLineItems(LineItem p_item)
         {
             return _repo.AddLineItems(p_item);
         }
-        public List<LineItems> GetAllLineItems()
+        public List<LineItem> GetAllLineItems()
         {
-            List<LineItems> listOfLineItems = _repo.GetAllLineItems();
+            List<LineItem> listOfLineItems = _repo.GetAllLineItems();
             return listOfLineItems;
         }
     } 

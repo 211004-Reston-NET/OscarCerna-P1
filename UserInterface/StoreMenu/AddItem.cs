@@ -23,9 +23,9 @@ namespace UserInterface
             Console.WriteLine("[2] Select Quanity");
             Console.WriteLine("[3] Select OrderId");
             Console.WriteLine("-------------------");
-            Console.WriteLine("Product ID: "+Singleton.lineItems.ProductID);
+            Console.WriteLine("Product ID: "+Singleton.lineItems.ProductId);      
             Console.WriteLine("Quantity: "+Singleton.lineItems.Quantity);
-            Console.WriteLine("Order ID: "+Singleton.lineItems.OrderID);
+            Console.WriteLine("Order ID: "+Singleton.lineItems.OrderId);
             Console.WriteLine();
             Console.WriteLine("[4] Add Item");
         }
@@ -37,7 +37,7 @@ namespace UserInterface
             {
                 case "1":
                 Console.WriteLine("Enter Product ID");
-                Singleton.lineItems.ProductID = Int32.Parse(Console.ReadLine());
+                Singleton.lineItems.ProductId = Int32.Parse(Console.ReadLine());
                     return MenuType.AddItem;
 
                 case "2":
@@ -49,11 +49,11 @@ namespace UserInterface
                 List<Orders> listOfOrders = _orderBL.GetAllOrders();
                 foreach (Orders orders in listOfOrders)
                 {
-                    Console.WriteLine(orders.OrderID);
+                    Console.WriteLine(orders.OrderId);
                     Console.WriteLine(orders.OrderDate);
                 }
                 Console.WriteLine("Enter Order ID");
-                Singleton.lineItems.OrderID = Int32.Parse(Console.ReadLine());
+                Singleton.lineItems.OrderId = Int32.Parse(Console.ReadLine());
                 return MenuType.AddItem;
 
                 case "4":

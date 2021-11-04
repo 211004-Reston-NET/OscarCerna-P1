@@ -4,21 +4,23 @@ using System.Collections.Generic;
 namespace Models
 {
     public class Orders
-    {
-        private List<LineItems> lineItems = new List<LineItems>();
-        private int storeid;
-        private decimal totalPrice;
-        public List<LineItems> LineItems { get{return lineItems;} set {lineItems = value;} }
-
-        public int OrderID { get; set; }
-        public int StoreID { get; set; }
-        public int CustomerID { get; set; }
+    {  
+        public Orders()
+        {
+            LineItems = new HashSet<LineItem>();
+        }
+        public int OrderId { get; set; }
+        public int StoreId { get; set; }
+        public int CustomerId { get; set; }
         public DateTime OrderDate { get; set; }
-        public decimal TotalPrice { get{return totalPrice;} set {totalPrice = value;} }
-        
+        public decimal TotalPrice { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual StoreFront Store { get; set; }
+        public virtual ICollection<LineItem> LineItems { get; set; }
+
         public override string ToString()
         {
-            return $"OrderID: {OrderID}\n CustomerID: \nStoreID: {StoreID}\nOrderDate: {0:dd/MM/yyyy}\nTotalPrice: {TotalPrice}";
+            return $"OrderID: {OrderId}\n CustomerID: \nStoreID: {StoreId}\nOrderDate: {0:dd/MM/yyyy}\nTotalPrice: {TotalPrice}";
         }
     }
 }

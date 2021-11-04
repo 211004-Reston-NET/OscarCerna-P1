@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Models;
 
 #nullable disable
 
-namespace DataAccess.Entities
+namespace DataAccess
 {
     public partial class StoreAppDatabaseContext : DbContext
     {
@@ -20,7 +21,7 @@ namespace DataAccess.Entities
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<LineItem> LineItems { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
 
@@ -34,22 +35,22 @@ namespace DataAccess.Entities
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.CustomerAddress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("customer_Address");
 
-                entity.Property(e => e.CustomerEmail)
+                entity.Property(e => e.Email)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("customer_Email");
 
-                entity.Property(e => e.CustomerName)
+                entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("customer_Name");
 
-                entity.Property(e => e.CustomerPhone)
+                entity.Property(e => e.Phone)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("customer_Phone");
@@ -87,6 +88,8 @@ namespace DataAccess.Entities
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
+                entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
+
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Order)
@@ -100,8 +103,13 @@ namespace DataAccess.Entities
                     .HasConstraintName("FK__LineItem__Produc__65F62111");
             });
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<Orders>(entity =>
             {
+                entity.HasKey(e => e.OrderId)
+                    .HasName("PK__Orders__C3905BAFFEEDD119");
+
+                entity.ToTable("Orders");
+
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");

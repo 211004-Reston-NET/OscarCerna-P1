@@ -21,10 +21,5 @@ namespace BusinessLogic
             List<Product> listOfProduct = _repo.GetAllProduct();
             return listOfProduct;
         }
-        public Product GetProduct(int p_id)
-        {
-            Product searchCustomer = _repo.GetProduct(p_id);
-            return searchCustomer;
-        }
     }
 }

@@ -1,24 +1,27 @@
-
-
 using System;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Product
-    {
-        private string brand;
-        private string name;
-        private decimal price;
-        private string description;
-        public int ProductID { get; set; }
-        public string Brand { get{return brand;} set {brand = value;} }
-        public string Name { get{return name;} set {name = value;} }
-        public decimal Price { get{return price;} set {price = value;} }
-        public string Description { get{return description;} set {description = value;} }
+    {  
+        public Product()
+        {
+            Inventories = new HashSet<Inventory>();
+            LineItems = new HashSet<LineItem>();
+        }
+   
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductBrand { get; set; }
+        public decimal ProductPrice { get; set; }
+        public string ProductDescription { get; set; }
+        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual ICollection<LineItem> LineItems { get; set; }
 
          public override string ToString()
         {
-            return $"ProductID: {ProductID}\nBrand: {Brand}\nName: {Name}\nPrice: {Price}\nDescription: {Description}";
+            return $"ProductID: {ProductId}\nBrand: {ProductBrand}\nName: {ProductName}\nPrice: {ProductPrice}\nDescription: {ProductDescription}";
         }
     }
 }

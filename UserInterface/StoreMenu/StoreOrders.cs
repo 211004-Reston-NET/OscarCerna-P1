@@ -17,12 +17,12 @@ namespace UserInterface
             Console.Clear();
             Console.WriteLine("=== Store Orders ===");
             Console.WriteLine();
-            List<Orders> listOfOrder = _orderBL.GetAllStoreOrdersById(Singleton.orders.StoreID);
+            List<Orders> listOfOrder = _orderBL.GetAllStoreOrdersById(Singleton.orders.StoreId);
             foreach (Orders item in listOfOrder)
             {
-                Console.WriteLine("Store ID: "+item.StoreID);
-                Console.WriteLine("Customer ID: "+item.CustomerID);
-                Console.WriteLine("Order ID: "+item.OrderID);
+                Console.WriteLine("Store ID: "+item.StoreId);
+                Console.WriteLine("Customer ID: "+item.CustomerId);
+                Console.WriteLine("Order ID: "+item.OrderId);
                 Console.WriteLine("Order Date: "+item.OrderDate);
                 Console.WriteLine("Total Price: "+item.TotalPrice);
             }   
@@ -36,7 +36,7 @@ namespace UserInterface
             switch (userChoice)
             {
                 case "0":
-                    return MenuType.StoreMenu;
+                    return MenuType.OrderHistory;
                 default:
                     Console.WriteLine("Invalid Selection!");
                     Console.WriteLine("Press Enter to Continue");

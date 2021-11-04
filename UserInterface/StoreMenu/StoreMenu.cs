@@ -32,7 +32,7 @@ namespace UserInterface
                     try
                     {
                         Singleton.inventory.StoreId = Int32.Parse(Console.ReadLine());
-                        Singleton.storeFront.StoreID = Singleton.inventory.StoreId;
+                        Singleton.storeFront.StoreId = Singleton.inventory.StoreId;
                     }
                     catch (System.Exception)
                     {                    

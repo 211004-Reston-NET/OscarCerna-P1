@@ -24,12 +24,12 @@ namespace UserInterface
                     return MenuType.StoreMenu;    
                 case "1":
                 Console.WriteLine("Enter Store ID");
-                Singleton.orders.StoreID = Int32.Parse(Console.ReadLine());
+                Singleton.orders.StoreId = Int32.Parse(Console.ReadLine());
                 return MenuType.StoreOrders;
 
                 case "2":
                 Console.WriteLine("Enter Customer ID");
-                Singleton.orders.CustomerID = Int32.Parse(Console.ReadLine());
+                Singleton.orders.CustomerId = Int32.Parse(Console.ReadLine());
                 return MenuType.CustomerOrders;
 
                 default:
