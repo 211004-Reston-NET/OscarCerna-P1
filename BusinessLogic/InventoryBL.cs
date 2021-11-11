@@ -12,10 +12,9 @@ namespace BusinessLogic
         {
          this._repo = p_repo;
         }
-        public List<Inventory> GetInventory(int p_store)
+        public List<Inventory> GetInventoryByStoreId(int p_Id)
         {
-            List<Inventory> listOfInventory = _repo.GetInventory(p_store);
-            return listOfInventory;
+           return _repo.GetInventoryByStoreId(p_Id);
         } 
     } 
 }

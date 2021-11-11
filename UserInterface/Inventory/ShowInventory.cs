@@ -26,14 +26,14 @@ namespace UserInterface
             Console.WriteLine();
             Console.WriteLine("-----------------------------");
             Console.WriteLine();
-            List<Inventory> listOfInventory = _inventoryBL.GetInventory(Singleton.inventory.StoreId);
+            List<Inventory> listOfInventory = _inventoryBL.GetInventoryByStoreId(Singleton.inventory.StoreId);
             foreach (Inventory item in listOfInventory)
             {
                 Console.WriteLine("Product ID: "+item.ProductId);
-                Console.WriteLine("Name: "+item.ProductName);
-                Console.WriteLine("Brand: "+item.ProductBrand);
+                Console.WriteLine("Name: "+item);
+                Console.WriteLine("Brand: "+item);
                 Console.WriteLine("Quantity: "+item.Quantity);
-                Console.WriteLine("Price: "+item.ProductPrice);
+                Console.WriteLine("Price: " + item);
                 Console.WriteLine();
             }
                 Console.WriteLine();

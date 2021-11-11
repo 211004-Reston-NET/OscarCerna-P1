@@ -22,15 +22,15 @@ namespace BusinessLogic
             List<Customer> listOfCustomer = _repo.GetAllCustomer();
             return listOfCustomer;
         }
-        public Customer GetCustomer(int p_id)
+        public Customer GetCustomerByName(string p_name)
         {
-                Customer custFound = _repo.GetCustomer(p_id);
+                Customer searchResult = _repo.GetCustomerByName(p_name);
 
-                if (custFound == null)
+                if (searchResult == null)
                 {
-                    throw new Exception("Customer was not found"); //exception isnt thrown
-                }
-            return custFound; 
+                    throw new Exception("Customer was not found!");
+                }    
+                return searchResult;
         }
     }
 }

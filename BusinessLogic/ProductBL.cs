@@ -21,5 +21,6 @@ namespace BusinessLogic
             List<Product> listOfProduct = _repo.GetAllProduct();
             return listOfProduct;
         }
+
     }
 }

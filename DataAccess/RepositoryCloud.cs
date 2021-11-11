@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Models;
@@ -15,16 +16,16 @@ namespace DataAccess
     public Customer AddCustomer(Customer p_cust)
         {
             _context.Customers.Add(p_cust);
-            _context.SaveChanges();
+            _ = _context.SaveChanges();
             return p_cust;
         }
     public List<Customer> GetAllCustomer()
         {
             return _context.Customers.ToList();
         }
-    public Customer GetCustomer(int p_id)
+    public Customer GetCustomerByName(string p_name)
         {
-            return _context.Customers.Find(p_id);
+            return _context.Customers.FirstOrDefault(s => s.Name.Contains(p_name));
         }
       
         public List<StoreFront> GetAllStores()
@@ -99,19 +100,20 @@ namespace DataAccess
                 }
                     return listOfLineItems;
         }
-        public List<Inventory> GetInventory(int storeid)
+        public List<Inventory> GetInventoryByStoreId(int p_Id)
         {
             var result = (from product in _context.Products
                          join Inventory in _context.Inventories
                          on product.ProductId equals Inventory.ProductId
                          join storeFront in _context.StoreFronts 
                          on Inventory.StoreId equals storeFront.StoreId
-                         where storeFront.StoreId == storeid
+                         where storeFront.StoreId == p_Id
                          select new
                          {
                             StoreName = storeFront.StoreName,
                             ProductName = product.ProductName,
                             ProductBrand = product.ProductBrand,
+                            ProductDescription = product.ProductDescription,
                             StoreId = storeFront.StoreId,
                             ProductId = product.ProductId,
                             Price = product.ProductPrice,
@@ -126,13 +128,16 @@ namespace DataAccess
                 {
                     StoreId = inventory.StoreId,
                     ProductId = inventory.ProductId,
+                    Quantity = inventory.Quantity,
                     ProductName = inventory.ProductName,
                     ProductBrand = inventory.ProductBrand,
+                    ProductDescription = inventory.ProductDescription,
                     ProductPrice = inventory.Price,
-                    Quantity = inventory.Quantity,
+
                 });
             }
             return listOfInventory;
         }
+
     }
 }

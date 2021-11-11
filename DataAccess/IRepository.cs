@@ -20,9 +20,9 @@ namespace DataAccess
         /// <summary>
         /// This will search for Customer in database 
         /// </summary>
-        /// <param name="p_id"> Will search for customer</param>
+        /// <param name="p_name"> Will locate the customer by name</param>
         /// <returns></returns>
-        Customer GetCustomer(int p_id);
+        Customer GetCustomerByName(string p_name);
 
 //STORE FRONTS
 
@@ -73,9 +73,9 @@ namespace DataAccess
         /// <summary>
         /// Will give Inventory List for a specific store
         /// </summary>
-        /// <param name="p_store"></param>
-        /// <returns>Inventory List Found</returns>
-        List<Inventory> GetInventory(int p_store);
-        
+        /// <param name="p_Id">This is the store id</param>
+        /// <returns> Returns the list of products associated to that store </returns>
+        List<Inventory> GetInventoryByStoreId(int p_id);
+
     }
 }

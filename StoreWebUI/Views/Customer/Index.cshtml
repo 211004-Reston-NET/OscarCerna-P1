@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model StoreWebUI.Models.CustomerVM
+@{
+    ViewData["Title"] = "Customers";
+ }
+
+<h1 class="display-4">Customers</h1>
+<br />
+<div>
+        <p><a href="https://localhost:44306/Customer/Create"> Create New Customer</a></p>
+        <div>
+            <div class="shadow-none p-3 mb-5 bg-light rounded">
+                <form asp-controller="Customer"  asp-action="Search">
+                    <input asp-for="Name" type="text" placeholder=" Search....">
+                    <button type="submit" value="Search">Search</button>
+                </form>
+            </div>
+        </div>
+</div>
+

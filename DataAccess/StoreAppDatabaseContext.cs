@@ -24,6 +24,7 @@ namespace DataAccess
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
+        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
