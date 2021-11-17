@@ -1,8 +1,6 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,26 +8,24 @@ namespace StoreWebUI.Models
 {
     public class InventoryVM
     {
-        public InventoryVM(Inventory p_inv) 
+        public InventoryVM()
         {
-            this.InventoryId = p_inv.Inventory1;
-            this.StoreId = p_inv.StoreId;
-            this.ProductName = p_inv.ProductName;
-            this.ProductBrand = p_inv.ProductBrand;
-            this.ProductDescription = p_inv.ProductDescription;
-            this.ProductPrice = p_inv.ProductPrice;
-            this.Quantity = p_inv.Quantity;
-            
-        }
 
-        [Key]
+        }
+        public InventoryVM(Inventory inv)
+        {
+            this.InventoryId = inv.InventoryId;
+            this.ProductId = inv.ProductId;
+            this.StoreId = inv.StoreId;
+            this.Quantity = inv.Quantity;
+            this.ProductName = inv.ProductName;
+            this.Price = inv.ProductPrice;
+        }
         public int InventoryId { get; set; }
         public int ProductId { get; set; }
         public int StoreId { get; set; }
         public int Quantity { get; set; }
         public string ProductName { get; set; }
-        public string ProductBrand { get; set; }
-        public string ProductDescription { get; set; }
-        public decimal ProductPrice { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataAccess;
@@ -20,6 +21,16 @@ namespace BusinessLogic
         {
             List<Product> listOfProduct = _repo.GetAllProduct();
             return listOfProduct;
+        }
+        public Product GetProductById(int p_id)
+        {
+            Product prodFound = _repo.GetProductById(p_id);
+
+            if (prodFound == null)
+            {
+                throw new Exception("Item not found");
+            }
+            return prodFound;
         }
 
     }

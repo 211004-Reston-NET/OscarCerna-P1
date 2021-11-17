@@ -17,9 +17,9 @@ namespace BusinessLogic
             List<StoreFront> listOfStores = _repo.GetAllStores();
             return listOfStores;
         }
-        public StoreFront GetStore(int p_id)
+        public StoreFront GetStoreById(int p_id)
         {
-                StoreFront storeFound = _repo.GetStore(p_id);
+                StoreFront storeFound = _repo.GetStoreById(p_id);
 
                 if (storeFound == null)
                 {
@@ -27,5 +27,6 @@ namespace BusinessLogic
                 }
             return storeFound; 
         }
+
     }
 }

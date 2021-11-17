@@ -8,15 +8,17 @@ namespace StoreWebUI.Models
 {
     public class StoreVM
     {
-        public StoreVM(StoreFront p_store)
+        public StoreVM(StoreFront _store)
         {
-            this.StoreId = p_store.StoreId;
-            this.StoreName = p_store.StoreName;
-            this.StoreAddress = p_store.StoreAddress;
+            this.StoreId = _store.StoreId;
+            this.Name = _store.StoreName;
+            this.Address = _store.StoreAddress;
         }
-        public int StoreId { get; set; }
-        public string StoreName { get; set; }
-        public string StoreAddress { get; set; }
 
+        public int StoreId { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

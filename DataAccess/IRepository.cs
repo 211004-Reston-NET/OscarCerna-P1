@@ -5,77 +5,158 @@ namespace DataAccess
 {
     public interface IRepository
     {
-//CUSTOMER
-        /// It will add a Customer in our database
+    //CUSTOMER
+
+        /// <summary>
+        /// Method will add new Customer to the db
         /// </summary>
-        /// <param name="p_cust">This is the Customer we will be adding to the database</param>
-        /// <returns>It will just return the Customer we are adding</returns>
+        /// <param name="p_cust"> This is the Customer being added </param>
+        /// <returns> Return the Customer being added </returns>
         Customer AddCustomer(Customer p_cust);
 
-        /// This will return a list of Customers stored in the database
+        /// <summary>
+        /// Method returns a list of Customers in the db
         /// </summary>
-        /// <returns>It will return a list of Customers</returns>
+        /// <returns> Returns a list of Customers </returns>
+  
         List<Customer> GetAllCustomer();
 
         /// <summary>
-        /// This will search for Customer in database 
+        /// Method will retrieve a Customer the db
         /// </summary>
-        /// <param name="p_name"> Will locate the customer by name</param>
-        /// <returns></returns>
+        /// <param name="p_name"> This is the Customer being searched </param>
+        /// <returns> Return the Customer being search for </returns>
         Customer GetCustomerByName(string p_name);
 
-//STORE FRONTS
-
-        /// This will return a list of Stores stored in the database
+        /// <summary>
+        /// Method will retrieve a Customer the db
         /// </summary>
+        /// <param name="p_id"> This is the Customer being searched </param>
+        /// <returns> Return the Customer being search for </returns>
+        Customer GetCustomerById(int p_id);
+
+    //STORE FRONTS
+
+        /// </summary>
+        /// This will return a list of Stores stored in the database
         /// <returns>It will return a Store </returns>
         List<StoreFront> GetAllStores();
 
-        /// This will return a Store stored in the database
+        /// <summary>
+        /// Method will retrieve a Store the db
         /// </summary>
-        /// <returns>It will return a Store </returns>
-        StoreFront GetStore(int p_id);
+        /// <param name="p_id"> This is the Store being searched </param>
+        /// <returns> Return the Store being search for </returns>
+        StoreFront GetStoreById(int p_id);
 
-//PRODUCTS
-        /// It will add an Product in our database
+    //PRODUCTS
+        /// <summary>
+        /// Method will add new Product to the db
         /// </summary>
-        /// <param name="p_product">This is the Product we will be adding to the database</param>
-        /// <returns>It will just return the product we are adding</returns>
-        Product AddProduct(Product p_product);
+        /// <param name="p_prod"> This is the Product being added </param>
+        /// <returns> Return the Customer being added </returns>
+        Product AddProduct(Product p_prod);
 
         /// <summary>
-        ///  This will return a list of products from the db.
-        /// </summary>
-        /// <returns> will return a list of products. </returns>
+        ///  This will return a list of Products from the db.
+        /// <returns> will return a list of Products. </returns>
         List<Product> GetAllProduct();
-        
-    
-//ORDERS
-        /// It will add an Order in our database
+
+        /// <summary>
+        /// Method will retrieve a Product the db
         /// </summary>
-        /// <param name="p_orders">This is the Order we will be adding to the database</param>
-        /// <returns>It will just return the Order we are adding</returns>
-        Orders AddOrder(Orders p_newOrder);
+        /// <param name="p_id"> This is the Product being searched </param>
+        /// <returns> Return the Product being search for </returns>
+        Product GetProductById(int p_id);
+
+    //ORDERS
+        /// <summary>
+        /// Method will add new Order to the db
+        /// </summary>
+        /// <param name="p_order"> This is the Order being added </param>
+        /// <returns> Return the Order being added </returns>
+        Orders AddOrder(Orders p_order);
+
+        /// <summary>
+        ///  This will return a list of Orders from the db.
+        /// <returns> will return a list of Orders. </returns>
         List<Orders> GetAllOrders();
-        List<Orders> GetAllOrdersById(int p_id);
-    
-//LINE ITEMS
 
+        /// <summary>
+        /// Method will retrieve an Customer Order from the db
+        /// </summary>
+        /// <param name="p_id"> This is the Customer Id being searched </param>
+        /// <returns> Return the Order being search for </returns>
+        List<Orders> GetStoreOrders(int p_id);
+        List<Orders> GetCustomerOrders(int p_id);
+
+
+
+
+        //LINE ITEMS
+
+        /// <summary>
+        /// Method will add new Item to the db
+        /// </summary>
+        /// <param name="p_item"> This is the Item being added </param>
+        /// <returns> Return the Item being added </returns>
         LineItem AddLineItems(LineItem p_item);
-        /// <summary>
-        ///  This will return a list of products from the db.
-        /// </summary>
-        /// <returns> will return a list of products. </returns>
-        List<LineItem> GetAllLineItems();
-        List<LineItem> GetAllLineItems(int orderId);
 
-//INVENTORY
         /// <summary>
-        /// Will give Inventory List for a specific store
+        ///  This will return a list of Items from the db.
+        /// <returns> will return a list of Items. </returns>
+        List<LineItem> GetAllLineItems();
+
+        /// <summary>
+        /// Method will retrieve an Item the db
         /// </summary>
-        /// <param name="p_Id">This is the store id</param>
-        /// <returns> Returns the list of products associated to that store </returns>
+        /// <param name="p_id"> This is the Item being searched </param>
+        /// <returns> Return the Item being search for </returns>
+        List<LineItem> GetItemById(int p_id);
+
+
+        //INVENTORY
+
+        /// <summary>
+        /// Method will add new Inventory to the db
+        /// </summary>
+        /// <param name="p_inv"> This is the Inventory being added </param>
+        /// <returns> Return the Invent being added </returns>
+        Inventory AddInventory(Inventory p_inv);
+
+
+        /// <summary>
+        ///  This will return a list of Inventory from the db.
+        /// <returns> will return a list of Inventory. </returns>
+        List<Inventory> GetAllInventory();
+
+        /// <summary>
+        /// Method will retrieve an Inventory Item the db by Store Id
+        /// </summary>
+        /// <param name="p_id"> This is the Inventory Item being searched </param>
+        /// <returns> Return the Inventory Item being search for </returns>
         List<Inventory> GetInventoryByStoreId(int p_id);
 
+        /// <summary>
+        /// Method will retrieve an Inventory Item the db by Store Id
+        /// </summary>
+        /// <param name="p_id"> This is the Inventory Item being searched </param>
+        /// <returns> Return the Inventory Item being search for </returns>
+        Inventory GetInventoryByProductId(int p_id);
+
+        /// <summary>
+        /// Method will retrieve an Inventory Item the db by Id
+        /// </summary>
+        /// <param name="p_id"> This is the Inventory Item being searched </param>
+        /// <returns> Return the Inventory Item being search for </returns>
+        Inventory GetInventoryById(int p_id);
+
+
+        /// <summary>
+        /// This will update the quantity of Inventory
+        /// </summary>
+        /// <param name="p_inv">This is Inventory that needs updating</param>
+        /// <returns>Returns the updated Inventory</returns
+        Inventory UpdateInventory(Inventory p_inv);
     }
 }

@@ -32,5 +32,15 @@ namespace BusinessLogic
                 }    
                 return searchResult;
         }
+        public Customer GetCustomerById(int p_id)
+        {
+            Customer custFound = _repo.GetCustomerById(p_id);
+
+            if (custFound == null)
+            {
+                throw new Exception("Customer was not found");
+            }
+            return custFound;
+        }
     }
 }

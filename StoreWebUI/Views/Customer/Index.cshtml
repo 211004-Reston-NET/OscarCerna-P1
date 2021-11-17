@@ -1,5 +1,4 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
@@ -7,19 +6,30 @@
 @model StoreWebUI.Models.CustomerVM
 @{
     ViewData["Title"] = "Customers";
- }
+}
 
-<h1 class="display-4">Customers</h1>
 <br />
-<div>
-        <p><a href="https://localhost:44306/Customer/Create"> Create New Customer</a></p>
-        <div>
-            <div class="shadow-none p-3 mb-5 bg-light rounded">
-                <form asp-controller="Customer"  asp-action="Search">
-                    <input asp-for="Name" type="text" placeholder=" Search....">
-                    <button type="submit" value="Search">Search</button>
-                </form>
-            </div>
+<h2 class="text-info">Customer </h2>
+<br />
+<br />
+<a href="https://localhost:44306/Customer/Create">
+    <button type="button" class="btn btn-info">New Customer</button>
+</a>
+<br />
+<br />
+<form asp-action="Search">
+    <div class="p-4 rounded border row">
+        <div class="col-8">
+            <input asp-for="Name" type="text" class="form-control" placeholder="Search Customer by Name" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
-</div>
+    </div>
+    <br />
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-success" value="Search">Search</button>
+        <a href="https://localhost:44306/">
+            <button type="button" class="btn btn-secondary">Back</button>
+        </a>
+    </div>
+</form>
 

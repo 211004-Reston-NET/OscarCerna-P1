@@ -12,23 +12,23 @@ namespace StoreWebUI.Controllers
 {
     public class InventoryController : Controller
     {
-        private InventoryBL _inventoryBL;
-
-        public InventoryController(InventoryBL p_inventoryBL)
+        private readonly InventoryBL _invBL;
+        private readonly ProductBL _prodBL;
+        private readonly StoreBL _storeBL;
+        public InventoryController(InventoryBL p_invBL, ProductBL p_prodBL, StoreBL p_storeBL)
         {
-            _inventoryBL = p_inventoryBL;
+            this._invBL = p_invBL;
+            this._prodBL = p_prodBL;
+            this._storeBL = p_storeBL;
         }
-
         // GET: InventoryController
-        public ActionResult Index(int p_id)
+        public ActionResult Index()
         {
-            List<Inventory> listOfInventory = _inventoryBL.GetInventoryByStoreId(p_id);
-
-            return View(listOfInventory
-                .Select(inv => new InventoryVM(inv))
-                .ToList());
+            return View(_invBL.GetAllInventory()
+                   .Select(inv => new InventoryVM(inv))
+                    .ToList());
         }
-     
+
         // GET: InventoryController/Details/5
         public ActionResult Details(int id)
         {
@@ -39,6 +39,13 @@ namespace StoreWebUI.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        // GET: InventoryController/Edit/5
+        public ActionResult Edit(int p_id)
+        {
+
+            return View(new InventoryVM(_invBL.GetInventoryByProductId(p_id)));
         }
 
         // POST: InventoryController/Create
@@ -56,25 +63,15 @@ namespace StoreWebUI.Controllers
             }
         }
 
-        // GET: InventoryController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
         // POST: InventoryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(InventoryVM p_inv)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            Inventory i = _invBL.GetInventoryById(p_inv.InventoryId);
+            i.Quantity += p_inv.Quantity;
+            _invBL.UpdateInventory(i);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: InventoryController/Delete/5

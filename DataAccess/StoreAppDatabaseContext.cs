@@ -1,4 +1,5 @@
 ﻿using System;
+using DataAccess.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Models;
@@ -16,15 +17,15 @@ namespace DataAccess
         public StoreAppDatabaseContext(DbContextOptions<StoreAppDatabaseContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<LineItem> LineItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
-        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,12 +60,12 @@ namespace DataAccess
 
             modelBuilder.Entity<Inventory>(entity =>
             {
-                entity.HasKey(e => e.Inventory1)
+                entity.HasKey(e => e.InventoryId)
                     .HasName("PK__Inventor__C7DAC506400EDEA7");
 
                 entity.ToTable("Inventory");
 
-                entity.Property(e => e.Inventory1).HasColumnName("Inventory");
+                entity.Property(e => e.InventoryId).HasColumnName("InventoryID");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -89,9 +90,9 @@ namespace DataAccess
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
-                entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
-
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.Quantity).HasColumnName("Quantity");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.LineItems)

@@ -49,7 +49,7 @@ namespace StoreWebUI.Controllers
             {
                 _custBL.AddCustomer(new Customer()
                 {
-                    Name = custVM.
+                    Name = custVM.Name,
                     Address = custVM.Address,
                     Email = custVM.Email,
                     Phone = custVM.Phone,

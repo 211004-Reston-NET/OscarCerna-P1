@@ -6,17 +6,10 @@ using System.Threading.Tasks;
 
 namespace StoreWebUI.Models
 {
-    public class ShoppingCartVM
+    public class CartVM
     {
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
-
-        public ShoppingCartVM(Product product, int quantity)
-        {
-            Product = product;
-            Quantity = quantity;
-        }
-
     }
 }

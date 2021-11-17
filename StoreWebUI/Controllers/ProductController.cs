@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLogic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using Newtonsoft.Json;
+using StoreWebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +13,12 @@ namespace StoreWebUI.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly ProductBL _prodBL;
+        public ProductController(ProductBL p_prodBL)
+        {
+            this._prodBL = p_prodBL;
+        }
+
         // GET: ProductController
         public ActionResult Index()
         {
@@ -16,9 +26,9 @@ namespace StoreWebUI.Controllers
         }
 
         // GET: ProductController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int p_id)
         {
-            return View();
+            return View(new ProductVM(_prodBL.GetProductById(p_id)));
         }
 
         // GET: ProductController/Create

@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model StoreWebUI.Models.ProductVM
+
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Product Details </h2>
+        <br />
+    </div>
+    <div class="col-6 text-right"></div>
+</div>
+
+    <table class="table">
+
+        <thead>
+            <tr class="table-success">
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => modelItem.Name)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Price)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Brand)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Description)</td>
+            </tr>
+        </thead>
+    </table>
+    <br />
+    <a href="https://localhost:44306/Inventory">
+        <button type="button" class="btn btn-secondary">Back</button>
+    </a>

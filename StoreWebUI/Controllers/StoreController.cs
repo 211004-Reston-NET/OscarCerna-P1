@@ -11,21 +11,23 @@ namespace StoreWebUI.Controllers
 {
     public class StoreController : Controller
     {
-        private StoreBL _storeBL;
+        private readonly StoreBL _storeBL;
+
         public StoreController(StoreBL p_storeBL)
         {
             _storeBL = p_storeBL;
         }
-
         // GET: StoreController
         public ActionResult Index()
         {
             return View(_storeBL.GetAllStores()
-                   .Select(store => new StoreVM(store)));
+                   .Select(store => new StoreVM(store))
+                    .ToList());
         }
 
+
         // GET: StoreController/Details/5
-        public ActionResult Details(int p_id)
+        public ActionResult Details(int id)
         {
             return View();
         }

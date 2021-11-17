@@ -59,7 +59,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Inventory", b =>
                 {
-                    b.Property<int>("Inventory1")
+                    b.Property<int>("InventoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("Inventory")
@@ -88,7 +88,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasColumnName("StoreID");
 
-                    b.HasKey("Inventory1")
+                    b.HasKey("InventoryId")
                         .HasName("PK__Inventor__C7DAC506400EDEA7");
 
                     b.HasIndex("ProductId");
@@ -196,29 +196,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("ShoppingCartItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ShoppingCartItemId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
             modelBuilder.Entity("Models.StoreFront", b =>
                 {
                     b.Property<int>("StoreId")
@@ -306,15 +283,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Store");
-                });
-
-            modelBuilder.Entity("Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Models.Customer", b =>

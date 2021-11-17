@@ -19,7 +19,7 @@ namespace UserInterface
             Console.Clear();
             Console.WriteLine("=== Inventory ===");
             Console.WriteLine();
-            StoreFront foundStore = _storeBL.GetStore(Singleton.storeFront.StoreId);
+            StoreFront foundStore = _storeBL.GetStoreById(Singleton.storeFront.StoreId);
             Console.WriteLine("Store ID: "+foundStore.StoreId);
             Console.WriteLine("Name: "+foundStore.StoreName);
             Console.WriteLine("Address: "+foundStore.StoreAddress);

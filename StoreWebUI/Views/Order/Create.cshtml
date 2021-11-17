@@ -1,27 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{ 
+    IEnumerable<StoreVM> stores = ViewData["store"] as IEnumerable<StoreVM>;
+    IEnumerable<CustomerVM> customers = ViewData["customer"] as IEnumerable<CustomerVM>;
 }
 
-<h2>Create New Order</h2>
 
-<label>
-    <b>
-        Customer Name
-    </b>
-</label>
-<div class="input-group mb-3">
-    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-</div>
+@model StoreWebUI.Models.OrderVM
+
+<br />
+<h2 class="text-info">New Order</h2>
+<br />
+
+<form asp-action="Create">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-6">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CustomerId"></label>
+                </div>
+                <div class="col-8">
+                    <select id="Customer" asp-for="CustomerId" class="form-control">
+                        <option selected>Select Customer</option>
+                        @foreach (var item in ViewData["customer"] as IEnumerable<Models.Customer>)
+                        {
+                            <option value="@item.CustomerId">@item.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="StoreId"></label>
+                </div>
+                <div class="col-8">
+                    <select id="store" asp-for="StoreId" class="form-control">
+                        <option selected>Select Store</option>
+                        @foreach (var item in ViewData["store"] as IEnumerable<Models.StoreFront>)
+                        {
+                            <option value="@item.StoreId">@item.StoreName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="StoreId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="OrderDate"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="OrderDate" class="form-control" />
+                    <span asp-validation-for="OrderDate" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-group text-right">
+                <button>@Html.ActionLink("Add Item", "Create", "LineItem", new { @style = "color: white" })</button>
+                <button type="submit" class="btn btn-success" value="Create">Save Order</button>
+                <a href="https://localhost:44306/">
+                    <button type="button" class="btn btn-secondary">Back</button>
+                </a>
+            </div>
+        </div>
+</form>
+
 
 
 

@@ -17,7 +17,7 @@ namespace UserInterface
             Console.Clear();
             Console.WriteLine("=== Customer Orders ===");
             Console.WriteLine();
-            List<Orders> listOfOrder = _orderBL.GetAllStoreOrdersById(Singleton.orders.CustomerId);
+            List<Orders> listOfOrder = _orderBL.GetCustomerOrders(Singleton.orders.CustomerId);
             foreach (Orders item in listOfOrder)
             {
                 Console.WriteLine("Customer ID: "+item.CustomerId);

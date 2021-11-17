@@ -20,9 +20,15 @@ namespace BusinessLogic
             List<Orders> listOfOrders = _repo.GetAllOrders();
             return listOfOrders;
         }
-        public List<Orders> GetAllStoreOrdersById(int p_id)
+
+        public List<Orders> GetStoreOrders(int p_id)
         {
-            return _repo.GetAllOrdersById(p_id);
-         }
+            return _repo.GetStoreOrders(p_id);
+        }
+
+        public List<Orders> GetCustomerOrders(int p_id)
+        {
+            return _repo.GetCustomerOrders(p_id);
+        }
     }
 }

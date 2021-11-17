@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataAccess;
@@ -21,5 +22,10 @@ namespace BusinessLogic
             List<LineItem> listOfLineItems = _repo.GetAllLineItems();
             return listOfLineItems;
         }
+        public List<LineItem> GetItemById(int p_id)
+        {
+            return _repo.GetItemById(p_id);
+        }
+
     } 
 }

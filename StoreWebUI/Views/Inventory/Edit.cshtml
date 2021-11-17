@@ -1,0 +1,58 @@
+﻿@model StoreWebUI.Models.InventoryVM
+
+<br />
+<h2 class="text-info">Update Inventory</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="form-group">
+                    <div>
+                        <label asp-for="InventoryId" class="control-label"></label>
+                    </div>
+                    <select class="form-control" name="Inventory Id" id="InventoryId" asp-for="InventoryId">
+                        <option>@Model.InventoryId</option>
+                    </select>
+                    <span asp-validation-for="InventoryId" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="ProductId" class="control-label"></label>
+                </div>
+                <select id="store" asp-for="ProductId" class="form-control">
+                    <option>@Model.ProductId</option>
+                </select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label asp-for="StoreId" class="control-label"></label>
+                </div>
+                <select id="store" asp-for="StoreId" class="form-control">
+                    <option>@Model.StoreId</option>
+                </select>
+                <span asp-validation-for="StoreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label asp-for="Quantity" class="control-label"></label>
+                </div>
+                <input type="number" id="quantity" max="5" name="quantity" placeholder="Enter Quantity" class="form-control" />
+                <span class="text-danger"></span>
+            </div>
+            <div>
+                <a href="https://localhost:44306/Inventory">
+                    <br />
+                    <button type="submit" class="btn btn-success" value="Update">Update</button>
+                    <button type="button" class="btn btn-secondary">Back</button>
+                    <br />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

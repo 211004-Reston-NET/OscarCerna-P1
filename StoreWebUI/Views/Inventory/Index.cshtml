@@ -4,36 +4,40 @@
 @{
 }
 
-@{
-    ViewData["Title"] = "Inventory";
-}
-
 @model IEnumerable<StoreWebUI.Models.InventoryVM>
 
-<h1 class="display-4">Inventory</h1>
-
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"> Inventory</h2>
+        <br />
+    </div>
+    <div class="col-6 text-right"></div>
+</div>
 <table class="table">
-
     <thead>
-        <tr>
+        <tr class="table-success">
             <th scope="col">Name</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Description</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Action</th>
         </tr>
-    </thead>
-    <tbody>
-    @foreach (InventoryVM item in Model)
-    {
+        @foreach (InventoryVM item in Model)
+            {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
-            <td>@Html.DisplayFor(modelItem => item.ProductBrand)</td>
-            <td>@Html.DisplayFor(modelItem => item.ProductDescription)</td>
-            <td>@Html.DisplayFor(modelItem => item.ProductPrice)</td>
-            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+        <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+        <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+        <td>
+            <button class="btn btn-info">@Html.ActionLink("More Details", "Details", "Product", new { p_id = item.ProductId }, new { @style = "color: white" })</button>
+            <button class="btn btn-info">@Html.ActionLink("Update", "Edit", "Inventory", new { p_id = item.ProductId }, new { @style = "color: white" })</button>
+        </td>
         </tr>
-
-    }
-    </tbody>
+             }
+    </thead>
 </table>
+<br />
+<a href="https://localhost:44306/">
+    <button type="button" class="btn btn-secondary">Back</button>
+</a>
+

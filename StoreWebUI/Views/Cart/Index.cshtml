@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+
+<br />
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+            <tr>
+                @foreach (LineItemsVM item in ViewBag.cart)
+                { 
+                    <tr>
+                        <td>@item.Product.ProductId</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Product.ProductPrice</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Product.ProductPrice * item.Quantity)</td>
+                    </tr>  
+                }
+             </tr>
+</table>
+</div>
+<div class="row"
+    <div class="col-6">
+           <a asp-action="Index" asp-controller="Inventory" class="btn btn-success">Back </a>
+    </div>
+        <div class="col-6 text-right">
+            <h4>Total Amount</h4>
+            <h4>Grand Total: @* Model.Sum(c=>c.Price)*@</h4>
+           <a asp-action="Index" asp-controller="Home" class="btn btn-info">Checkout</a>
+    </div>
+</div>
