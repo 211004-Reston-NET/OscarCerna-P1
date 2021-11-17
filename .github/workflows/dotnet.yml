@@ -23,13 +23,13 @@ jobs:
       with:
         nuget-version: ${{env.NUGET_VERSION}}
     - name: Restore dependencies
-      run: dotnet restore 
+      run: dotnet restore StoreWebUI/
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build StoreWebUI/ --configuration Release --no-restore
     - name: Test
-      run: dotnet test  --no-restore --verbosity normal
+      run: dotnet test StoreWebUI/  --no-restore --verbosity normal
     - name: Publish
-      run: dotnet publish  --configuration Release -o publish
+      run: dotnet publish StoreWebUI/  --configuration Release -o publish
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with:
